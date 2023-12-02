@@ -5,4 +5,5 @@ https://adventofcode.com/
 
 ### Day 1
     - 55488
-    - 
+    - 55614
+### Day 2
