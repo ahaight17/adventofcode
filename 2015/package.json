@@ -1,0 +1,18 @@
+{
+  "name": "adventofcode2015",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Alex Haight",
+  "license": "ISC",
+  "homepage": "https://github.com/ahaight17/adventofcode#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "md5": "^2.3.0"
+  }
+}
