@@ -11,39 +11,26 @@ const day4 = () => {
 }
 
 const part2 = (input) => {
-    let totalScratchCards = 0
     let scratchCardCopies = { }
-    input.forEach((string) => {
+
+    input.forEach((string, i) => {
         let winningNumberCount = 0;
-        const parts = string.split(": ")
+        const possibleWinners = string.split(": ")[1].split(" | ")[0].split(" ")
+        const myNumbers = string.split(": ")[1].split(" | ")[1].split(" ")
 
-        const id = parseInt(parts[0].split("Card")[1].trim())
-        const possibleWinners = parts[1].split(" | ")[0].split(" ")
-        const myNumbers = parts[1].split(" | ")[1].split(" ")
-        scratchCardCopies[`${id}`] = scratchCardCopies[`${id}`] === undefined ? 1 : scratchCardCopies[`${id}`]
-        
-        for(let i = 0; i < scratchCardCopies[`${id}`]; i++){
+        scratchCardCopies[i] = scratchCardCopies[i] === undefined ? 1 : scratchCardCopies[i]+1
     
-            possibleWinners.forEach((number) => {
-                const winner = myNumbers.includes(number) && number !== ""
-                
-                if(winner){
-                    winningNumberCount++;
+        possibleWinners.forEach((number) => {
+            winningNumberCount +=  myNumbers.includes(number) && number !== "";
+        })
 
-                    scratchCardCopies[`${id+winningNumberCount}`] = scratchCardCopies[`${id+winningNumberCount}`] === undefined ? 2 : scratchCardCopies[`${id+winningNumberCount}`]+1
-                }
-            })
-            for(let i = 0; i < winningNumberCount; i++){
-                const copies = scratchCardCopies[`${id}`]
-                scratchCardCopies[`${id+i}`] === undefined ? 1+copies : scratchCardCopies[`${id+winningNumberCount}`]+copies
-            }
-            
-            totalScratchCards++
-            winningNumberCount = 0;
+        for(let j = i+1; j <= i+winningNumberCount; j++){
+            const copies = scratchCardCopies[i]
+            scratchCardCopies[j] = scratchCardCopies[j] === undefined ? copies : scratchCardCopies[j] + copies
         }
     })
-
-    return totalScratchCards
+    
+    return Object.values(scratchCardCopies).reduce((sum, curr) => sum + curr, 0)
 }
 
 const part1 = (input) => {

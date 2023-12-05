@@ -9,6 +9,15 @@ https://adventofcode.com/
 ### Day 2
     - 2771
     - 70924
+### Day 3
+    - 528819
+    - 80403602
+### Day 4
+    - 25010
+    - 9924412
+### Day 5
+    -
+    -
 
 ## 2015 Solutions
 
