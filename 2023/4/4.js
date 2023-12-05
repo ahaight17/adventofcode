@@ -25,11 +25,10 @@ const part2 = (input) => {
         })
 
         for(let j = i+1; j <= i+winningNumberCount; j++){
-            const copies = scratchCardCopies[i]
-            scratchCardCopies[j] = scratchCardCopies[j] === undefined ? copies : scratchCardCopies[j] + copies
+            scratchCardCopies[j] = scratchCardCopies[j] === undefined ? scratchCardCopies[i] : scratchCardCopies[j] + scratchCardCopies[i]
         }
     })
-    
+
     return Object.values(scratchCardCopies).reduce((sum, curr) => sum + curr, 0)
 }
 
